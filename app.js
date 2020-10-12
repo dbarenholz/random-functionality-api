@@ -10,42 +10,31 @@ const bodyParser = require("body-parser");
 const winston = require("./config/winston");
 const { prettyString } = require("./utils");
 
-// Create String.format method for us to use in the code.
-if (!String.format) {
-  String.format = function (format) {
-    let args = Array.prototype.slice.call(arguments, 1);
-    return format.replace(/{(\d+)}/g, function (match, number) {
-      return typeof args[number] != "undefined" ? args[number] : match;
-    });
-  };
-}
-
-// Create Array.last method for us to use in the code.
-if (!Array.last) {
-  Array.last = function () {
-    return this[this.length - 1];
-  };
-}
-
 // Create express application
 const app = express();
 app.use(morgan("short", { stream: winston.stream }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Handle CORS
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "POST, GET, DELETE, PATCH");
+    // TODO NOTE: For your usage, set allowed Access-Control methods header.
+    res.header("Access-Control-Allow-Methods", "GET");
     return res.status(200).json({});
   }
   next();
 });
 
-// Set routes
-const numberRoutes = require("./routes/numbers");
-app.use("/numbers", numberRoutes);
+// Import routes
+const helloRoutes = require("./routes/hello");
+const byeRoutes = require("./routes/hello");
+
+// Use the routes
+app.use("/hello", helloRoutes);
+app.use("/bye", byeRoutes);
 
 // Error handling
 app.use((_req, _res, next) => {
