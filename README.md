@@ -1,3 +1,5 @@
+**NOTE: This is very old. You probably want something newer than this. Archived.**
+
 # What is this?
 
 Welcome to this repository. You might be wondering what the purpose of this repo is, to which an answer would be: none. I just got bored.
