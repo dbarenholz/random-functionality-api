@@ -8,4 +8,6 @@ module.exports = {
   apiURL: "172.28.160.134",
   // The port on which you want to run the server.
   BACKEND_PORT: 8888,
+  // Timezone for logging.
+  TIMEZONE: "Europe/Amsterdam"
 };

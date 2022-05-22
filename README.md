@@ -1,15 +1,20 @@
-**NOTE: This is very old. You probably want something newer than this. Archived.**
+# express-winston-boilerplate
 
-# What is this?
+Want to create an API, but don't want to setup your files?
+Use this template repository!
 
-Welcome to this repository. You might be wondering what the purpose of this repo is, to which an answer would be: none. I just got bored.
+## What's there?
 
-The alternative purpose is that this repository can be used as boilerplate for your next express-powered API. It contains a node application, configurable using an `env.config.js` file, that provides a single endpoint that says hello back to you. It's almost the same as having a friend!
+- `index.js`: Entry point of the API service; starts the service when run.
+- `app.js`: The API application (which uses express). This is where you use your API routes, or send users to a 404 page.
+- `routes/`: Folder which contains all your routes, organised in different files (or even subfolders).
+- `controllers/`: Folder with the routing logic, organised in different files (or even subfolders).
+- `config/env.config.js`: Configuration file for the environment: Specify your IP and PORT here!
+- `config/winston.js`: Configuration file for logging (which uses winston). Currently uses an opinionated logging format, but can be changed as wished.
 
-## Install your NPM packages
+## Setting up
 
-`npm install` or simply `npm i`
-
-## Run the thing
-
-`npm run dev`. It uses `nodemon` as dev dependency for those lovely errors that will surely pop up when developing an API.
+1. Clone the repository with your favourite git tool.
+2. Install NPM packages: `npm install` or `npm i`.
+3. Change your desired settings in the config folder.
+4. Run the API: `npm run dev`.

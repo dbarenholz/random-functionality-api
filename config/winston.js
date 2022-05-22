@@ -4,6 +4,7 @@
  * @version 1.0.0
  */
 const winston = require("winston");
+const { TIMEZONE } = require("./env.config");
 
 // Transports
 const transportDefinitions = {
@@ -29,7 +30,7 @@ const transportDefinitions = {
 // timezone function winston calls to get timezone
 const timezoned = () =>
   new Date().toLocaleString("en-US", {
-    timeZone: "Europe/Amsterdam",
+    timeZone: TIMEZONE,
   });
 
 // logger object with above defined options
